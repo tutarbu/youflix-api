@@ -9,7 +9,7 @@ def get_link():
     if not yt_url:
         return jsonify({"error": "YouTube link eksik"}), 400
     try:
-        result = subprocess.check_output(["yt-dlp", "-f", "-g", yt_url])
+        result = subprocess.check_output(["yt-dlp", "-g", yt_url])
         return jsonify({"video_url": result.decode().strip()})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
